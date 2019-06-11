@@ -7,6 +7,8 @@ rc('font', family=font_name)
 
 df = pd.read_csv('Accident.csv',encoding = 'CP949')
 
+
+
 seoul = df.loc[1:299,['시도','시군구','시간대','발생건수']]
 busan = df.loc[300:491,['시도','시군구','시간대','발생건수']]
 kyeonggi = df.loc[492:863,['시도','시군구','시간대','발생건수']]
@@ -27,6 +29,8 @@ sejong = df.loc[2700:2711,['시도','시군구','시간대','발생건수']]
 
 geumjeonggu = df.loc[420:431,['시도','시군구','시간대','발생건수']]
 geumjeonggu_num = geumjeonggu.loc[:,['발생건수']]
+dongraegu = df.loc[360:371,['시도','시군구','시간대','발생건수']]
+dongraegu_num = dongraegu.loc[:,['발생건수']]
 
 seoul_num = (seoul.loc[:,['발생건수']])
 busan_num = (busan.loc[:,['발생건수']])
@@ -49,8 +53,10 @@ sejong_num = (sejong.loc[:,['발생건수']])
 time = ['00시-02시','02시-04시','04시-06시','06시-08시','08시-10시','10시-12시','12시-14시','14시-16시','16시-18시','18시-20시','20시-22시','22시-0시']
 time2 = [0,1,2,3,4,5,6,7,8,9,10,11]
 
-plt.title('금정구 시간대별 사고 발생수')
+
+plt.title('시간대별 교통사고 발생수')
 plt.plot(time2,geumjeonggu_num,'bo-')
+plt.plot(time2,dongraegu_num,'bo-',c='r')
 plt.xticks(time2,time)
 plt.xlabel('시간')
 plt.ylabel('발생건수')
